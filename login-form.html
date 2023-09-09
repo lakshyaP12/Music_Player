@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/OIP.L4WoXxih4jAdUfp6-dXaaQHaHa?pid=ImgDet&rs=1">
+     <title> Login Now</title>
+    <link rel="stylesheet" type="text/css" href="New_Project.css">
+    <script src="https://kit.fontawesome.com/36fa65ebb9.js" crossorigin="anonymous"></script>
+    <style>
+        #body {
+            background-color: rgb(46, 46, 46);
+        }
+
+        #login-form {
+            /*  border:crimson solid 5px;*/
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            background-color: rgb(46, 46, 46);
+            padding-top: 100px;
+
+
+
+        }
+
+        #login-form h1 {
+            color: white;
+        }
+
+        #pass,
+        #email,#number_input {
+            width: 80%;
+            height: 50px;
+            margin: 20px 0px;
+            background-color: lightgrey;
+            padding-left: 10px;
+            border-radius: 120px/120px;
+            font-size: 1.2rem;
+        }
+
+        #login-form h1 {
+            font-size: 2.8rem;
+
+        }
+
+        #button {
+            width: 300px;
+            height: 50px;
+            font-size: 1.4rem;
+            margin: 5px 29%;
+            font-weight: bolder;
+            background-color: crimson;
+            border-radius: 120px/120px;
+            color: white;
+
+        }
+
+        #forgot_pass {
+            margin-left: 140px;
+            color: white;
+        }
+
+        #button:hover {
+            opacity: 0.9;
+        }
+
+        #label {
+            color: white;
+        }
+
+       
+        #home{
+          color:beige;
+          text-decoration: none;
+          font-size:1.8rem;
+          position: absolute;
+          left:30px;
+          top:5px;
+          border:2px solid white;
+
+}
+        #home:hover{
+            color:grey;
+            border:2px solid grey;
+
+        }
+        .valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: ""
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "";
+}
+#login-text{
+  animation: flexible 0.6s ease-in-out infinite alternate;
+}
+@keyframes flexible {
+	75% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}
+#sign_link{
+          color: beige;
+          font-size:1.4rem;
+          position: absolute;
+          right:30px;
+          top:5px;
+        
+}
+#sign_link a{
+  text-decoration: none;
+  color:cyan;
+  font-size:2rem;
+  border-bottom: 2px solid white;
+} 
+
+    </style>
+</head>
+
+<body>
+   
+    <section id="login-form">
+        <a href="new_project_up.html" id="home"> Home </a> 
+        <div id="sign_link">Don't Have an Account? <a href="sign_up.html">SignUp Now</a></div>
+        
+       <form>
+        <div>
+            <h1 id="login-text"> Login Now !</h1>
+            <div id="email-input">
+                <input id="email" type="email" name="passw" placeholder="Enter your email" required >
+            </div>
+            <div id="pass-input">
+   
+                <input id="pass" type="password" name="passw" placeholder="Password" required >
+            </div>
+            <div  id="pass-input"> 
+              <input id="number_input" type="number" name="passw" placeholder="Number" required >
+            </div>
+            <div id="button1">
+                <input id="button" type="submit" value="Login" for="passw">
+        </div>
+      </form>
+        <div>
+
+            <input id="check" type="checkbox" value="Remember Me">
+            <label for="check" id="label"> Remember Me</label>
+            <a href="#" id="forgot_pass">Forgot Password? </a>
+        </div>
+        
+        <div id="message">
+            <h3 style="color:white;"> Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+           <!-- <p> correct</p> -->
+    
+          </div>
+    </section>
+
+    <script>
+        var myInput = document.getElementById("pass");
+        var emInput=document.getElementById("email");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("num");
+        var butt_1= document.getElementById("button");
+      
+        
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+          document.getElementById("message").style.display = "block";
+        }
+        
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+          document.getElementById("message").style.display = "none";
+        }
+        
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if(myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+        }
+        
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if(myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+          }
+        
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if(myInput.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+          }
+        
+        
+        }
+        var obj={
+          email:"lakshya@gmail.com",
+          pass:"Lakshya12345"
+        }
+        
+        butt_1.addEventListener("click",function(){
+          if ( myInput.value=="Lakshya12345" && emInput.value=="lakshya@gmail.com"){
+               alert("login succesfully")
+           }
+           
+           if(myInput.value==""){
+              alert("Fill Out All Fields")
+           }
+          else{
+             alert(" Password and Email Doesn't Match");
+           }
+        });
+        </script>
+</body>
+
+</html>
